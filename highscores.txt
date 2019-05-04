@@ -1,0 +1,12 @@
+csm,10
+adcm,8
+adcm,11
+csm,11
+csm, 20
+csm, 30
+adcm,8
+xem,21
+csm,9
+SGM,10
+csm,7
+csm,8
