@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import os
-import time
 import random
 import operator
+from time import sleep
 from subprocess import Popen
 
 last_say = None
@@ -15,7 +15,8 @@ def say(message, wait_time=0):
   if last_say is not None:
     last_say.terminate()
   last_say = Popen(["say", message])
-  time.sleep(wait_time)
+  sleep(wait_time)
+  return True
 
 def say_and_print(message, wait_time=0):
   print(message)
@@ -97,7 +98,8 @@ def record_score(initials, guesses):
     highscores_file.write("%s,%i\n" % (initials, guesses))
 
 def end_game():
-  print
+  print ""
+  return True
 
 if __name__ == "__main__":
   try:
