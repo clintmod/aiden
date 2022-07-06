@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import mock
+from unittest import mock
 import unittest
 import guessing_game
 

@@ -25,11 +25,11 @@ def say_and_print(message, wait_time=0):
 
 def prompt_yes_no(message):
   say(message, 0)
-  return raw_input("%s y/n: " % message)
+  return input(f"{message} y/n:")
 
 def prompt(message):
   say(message, 0)
-  return raw_input("%s\n" % message)
+  return input(f"{message}\n")
 
 def start_game():
   show_high_scores()
@@ -46,10 +46,10 @@ def show_high_scores():
 def print_high_scores(entries):
   entries = set(entries)
   sorted_entries = sorted(entries, key=operator.itemgetter(1))
-  print "\nHIGH SCORES"
+  print ("\nHIGH SCORES")
   for entry in sorted_entries[:5]:
-    print "%s\t%i" % (entry[0], entry[1]) 
-  print ""
+    print( "%s\t%i" % (entry[0], entry[1]) )
+  print( "")
 
 def prompt_to_play():
   should_play = prompt_yes_no("Would you like to play a game?")
@@ -83,7 +83,10 @@ def guess_number(answer, guesses):
   else:
 
     say_and_print ("You are the big wiener!!!!!!!!!!", 2)
-    say_and_print ("It took you %i guesses" % guesses, 2)
+    message = "It took you %i guesses" % guesses
+    if guesses == 1:
+        message = "It took you %i guess!" % guesses
+    say_and_print (message, 2)
     should_record = prompt_yes_no("Would you like to record your score?")
     if should_record == "y":
       initials = prompt("Enter your initials: ")
@@ -91,18 +94,18 @@ def guess_number(answer, guesses):
       show_high_scores()
     else:
       show_high_scores()
-      end_game()
+      end_game() 
 
 def record_score(initials, guesses):
   with open('highscores.txt', 'a') as highscores_file:
     highscores_file.write("%s,%i\n" % (initials, guesses))
 
 def end_game():
-  print ""
+  print( "")
   return True
 
 if __name__ == "__main__":
-  try:
-    start_game()
-  except KeyboardInterrupt:
-    end_game()
+    try:
+        start_game()
+    except KeyboardInterrupt:
+        end_game()
